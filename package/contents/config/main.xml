@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+
+    <kcfgfile name=""/>
+
+    <group name="General">
+        <entry name="timeColor" type="Color">
+            <default>#ffffff</default>
+        </entry>
+
+        <entry name="secondaryColor" type="Color">
+            <default>#ffffff</default>
+        </entry>
+
+        <entry name="fontFamily" type="String">
+            <default>Noto Sans</default>
+        </entry>
+
+        <entry name="timeFontSize" type="Int">
+            <default>38</default>
+        </entry>
+
+        <entry name="secondaryFontSize" type="Int">
+            <default>16</default>
+        </entry>
+
+        <entry name="showSeconds" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="use24Hour" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="uppercaseLabels" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="letterSpacing" type="Int">
+            <default>2</default>
+        </entry>
+
+        <entry name="lineSpacing" type="Int">
+            <default>6</default>
+        </entry>
+    </group>
+</kcfg>

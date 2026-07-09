@@ -1,0 +1,18 @@
+# KDE/Plasma generated packages
+*.plasmoid
+
+# Logs
+*.log
+
+# Editor files
+.idea/
+*.iml
+
+# Temporary files
+*.swp
+*~
+.DS_Store
+
+# Build/cache folders
+build/
+.cache/

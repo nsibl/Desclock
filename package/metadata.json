@@ -1,0 +1,19 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "Noah Sibley",
+        "Email": "noah.sibley23@gmail.com"
+      }
+    ],
+    "Category": "Date and Time",
+    "Description": "A simple desktop clock showing the day, time, and current date.",
+    "Icon": "preferences-system-time",
+    "Id": "com.github.noah.desclock",
+    "License": "MIT",
+    "Name": "Desclock",
+    "Version": "1.0"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "KPackageStructure": "Plasma/Applet"
+}
