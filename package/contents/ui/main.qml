@@ -4,9 +4,11 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
 import org.kde.kirigami as Kirigami
 
+// Root object for the widget
 PlasmoidItem {
     id: root
 
+    // Set the default size
     width: 500
     height: 250
 
@@ -23,6 +25,7 @@ PlasmoidItem {
         )
     }
 
+    // Determines format based on 12/24 hr
     function timeFormat() {
         if (plasmoid.configuration.use24Hour) {
             if (plasmoid.configuration.showSeconds) {
@@ -39,6 +42,7 @@ PlasmoidItem {
         }
     }
 
+    // AM/PM only on 12 hr
     function shouldShowPeriodText() {
         if (plasmoid.configuration.use24Hour) {
             return false
@@ -47,6 +51,7 @@ PlasmoidItem {
         }
     }
 
+    // Return user selected font
     function selectedFontFamily() {
         var configuredFont = plasmoid.configuration.fontFamily
 
@@ -69,6 +74,21 @@ PlasmoidItem {
         }
     }
 
+    // Adds a dark outline only when the color channels are bright enough
+    function outlineStyleForColor(textColor) {
+        var red = textColor.r
+        var green = textColor.g
+        var blue = textColor.b
+
+        if (red >= 0.80 &&
+            green >= 0.80 &&
+            blue >= 0.80) {
+            return Text.Outline
+        } else {
+            return Text.Normal
+        }
+    }
+
     Timer {
         interval: 1000
         running: true
@@ -83,6 +103,7 @@ PlasmoidItem {
     fullRepresentation: Item {
         anchors.fill: parent
 
+        // Centers the components in vertical layout
         ColumnLayout {
             anchors.centerIn: parent
 
@@ -108,7 +129,9 @@ PlasmoidItem {
 
                         color: plasmoid.configuration.timeColor
 
-                        style: Text.Outline
+                        style: root.outlineStyleForColor(
+                            plasmoid.configuration.timeColor
+                        )
                         styleColor: "#80000000"
 
                         font.family: root.selectedFontFamily()
@@ -129,7 +152,9 @@ PlasmoidItem {
 
                         color: plasmoid.configuration.timeColor
 
-                        style: Text.Outline
+                        style: root.outlineStyleForColor(
+                            plasmoid.configuration.timeColor
+                        )
                         styleColor: "#80000000"
 
                         font.family: root.selectedFontFamily()

@@ -10,7 +10,7 @@
     "Description": "A simple desktop clock showing the day, time, and current date.",
     "Icon": "preferences-system-time",
     "Id": "com.github.noah.desclock",
-    "License": "MIT",
+    "License": "GPL-3.0-or-later",
     "Name": "Desclock",
     "Version": "1.0"
   },

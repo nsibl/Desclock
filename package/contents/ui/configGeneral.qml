@@ -4,9 +4,11 @@ import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 import org.kde.kquickcontrols as KQControls
 
+// This is the main layout for the settings page
 Kirigami.FormLayout {
     id: page
 
+    // Define properties here
     property alias cfg_timeColor: timeColorButton.color
     property alias cfg_secondaryColor: secondaryColorButton.color
     property string cfg_fontFamily
@@ -18,6 +20,7 @@ Kirigami.FormLayout {
     property alias cfg_letterSpacing: letterSpacingBox.value
     property alias cfg_lineSpacing: lineSpacingBox.value
 
+    // Loads the default font I included
     FontLoader {
         id: pressStartFont
 
@@ -25,6 +28,7 @@ Kirigami.FormLayout {
             "../fonts/PressStart2P-Regular.ttf"
         )
 
+        // Rebuild the font selector after font finishes loading or if fails to load
         onStatusChanged: {
             if (status === FontLoader.Ready) {
                 page.initializeFontSelector()
@@ -36,10 +40,12 @@ Kirigami.FormLayout {
         }
     }
 
+    // Store included and user installed fonts
     ListModel {
         id: availableFonts
     }
 
+    // Builds font list for dropdown in settings
     function populateFontList() {
         availableFonts.clear()
 
@@ -51,6 +57,7 @@ Kirigami.FormLayout {
 
         var systemFonts = Qt.fontFamilies()
 
+        // Add installed fonts and avoid duplicates
         for (var i = 0; i < systemFonts.length; i++) {
             var currentFont = systemFonts[i]
             var shouldAddFont = true
@@ -69,6 +76,7 @@ Kirigami.FormLayout {
         }
     }
 
+    // Selects user's previously selected font, if unavailable fall back to one of these two
     function selectSavedFont() {
         var selectedIndex = -1
 
@@ -99,6 +107,7 @@ Kirigami.FormLayout {
         fontFamilyBox.currentIndex = selectedIndex
     }
 
+    // Wait for font to load then create list/select saved font
     function initializeFontSelector() {
         if (pressStartFont.status === FontLoader.Loading) {
             return
@@ -131,9 +140,11 @@ Kirigami.FormLayout {
 
         Kirigami.FormData.label: i18n("Font family:")
 
+        // Use the custom font list
         model: availableFonts
         textRole: "fontName"
 
+        // How the entries look in the dropdown
         delegate: QQC2.ItemDelegate {
             required property int index
             required property string fontName
@@ -154,6 +165,7 @@ Kirigami.FormLayout {
         }
     }
 
+    // Font preview
     Text {
         text: i18n("Try out fonts here")
 
