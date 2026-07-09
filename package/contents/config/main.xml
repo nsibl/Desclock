@@ -15,6 +15,14 @@
             <default>#ffffff</default>
         </entry>
 
+        <entry name="glowEnabled" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="glowStrength" type="Int">
+            <default>60</default>
+        </entry>
+
         <entry name="fontFamily" type="String">
             <default></default>
         </entry>

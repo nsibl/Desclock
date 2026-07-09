@@ -11,6 +11,8 @@ Kirigami.FormLayout {
     // Define properties here
     property alias cfg_timeColor: timeColorButton.color
     property alias cfg_secondaryColor: secondaryColorButton.color
+    property alias cfg_glowEnabled: glowEnabledBox.checked
+    property alias cfg_glowStrength: glowStrengthBox.value
     property string cfg_fontFamily
     property alias cfg_timeFontSize: timeFontSizeBox.value
     property alias cfg_secondaryFontSize: secondaryFontSizeBox.value
@@ -20,22 +22,21 @@ Kirigami.FormLayout {
     property alias cfg_letterSpacing: letterSpacingBox.value
     property alias cfg_lineSpacing: lineSpacingBox.value
 
-    // Loads the default font I included
+    // Loads the bundled font
     FontLoader {
-        id: pressStartFont
+        id: libreBaskervilleFont
 
         source: Qt.resolvedUrl(
-            "../fonts/PressStart2P-Regular.ttf"
+            "../fonts/LibreBaskerville-VariableFont_wght.ttf"
         )
 
-        // Rebuild the font selector after font finishes loading or if fails to load
         onStatusChanged: {
             if (status === FontLoader.Ready) {
-                page.initializeFontSelector()
+                initializeFontSelector()
             }
 
             if (status === FontLoader.Error) {
-                page.initializeFontSelector()
+                initializeFontSelector()
             }
         }
     }
@@ -49,9 +50,9 @@ Kirigami.FormLayout {
     function populateFontList() {
         availableFonts.clear()
 
-        if (pressStartFont.status === FontLoader.Ready) {
+        if (libreBaskervilleFont.status === FontLoader.Ready) {
             availableFonts.append({
-                fontName: pressStartFont.name
+                fontName: libreBaskervilleFont.name
             })
         }
 
@@ -62,8 +63,8 @@ Kirigami.FormLayout {
             var currentFont = systemFonts[i]
             var shouldAddFont = true
 
-            if (pressStartFont.status === FontLoader.Ready) {
-                if (currentFont === pressStartFont.name) {
+            if (libreBaskervilleFont.status === FontLoader.Ready) {
+                if (currentFont === libreBaskervilleFont.name) {
                     shouldAddFont = false
                 }
             }
@@ -87,9 +88,9 @@ Kirigami.FormLayout {
         }
 
         if (selectedIndex < 0) {
-            if (pressStartFont.status === FontLoader.Ready) {
+            if (libreBaskervilleFont.status === FontLoader.Ready) {
                 selectedIndex = fontFamilyBox.find(
-                    pressStartFont.name
+                    libreBaskervilleFont.name
                 )
             }
         }
@@ -109,7 +110,7 @@ Kirigami.FormLayout {
 
     // Wait for font to load then create list/select saved font
     function initializeFontSelector() {
-        if (pressStartFont.status === FontLoader.Loading) {
+        if (libreBaskervilleFont.status === FontLoader.Loading) {
             return
         }
 
@@ -133,6 +134,23 @@ Kirigami.FormLayout {
 
         Kirigami.FormData.label: i18n("Day/date color:")
         showAlphaChannel: true
+    }
+
+    QQC2.CheckBox {
+        id: glowEnabledBox
+        text: i18n("Enable text glow")
+    }
+
+    QQC2.SpinBox {
+        id: glowStrengthBox
+
+        Kirigami.FormData.label: i18n("Glow Strength:")
+
+        from: 10
+        to: 100
+        value: 60
+
+        enabled: glowEnabledBox.checked
     }
 
     QQC2.ComboBox {
