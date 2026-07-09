@@ -23,6 +23,20 @@ A clean and customizable desktop clock widget for KDE Plasma 6.
 
 ## Installation
 
+### Install from the KDE Store
+
+DesClock is available through the KDE Store.
+
+1. Right-click an empty area of the KDE Plasma desktop.
+2. Select **Add Widgets**.
+3. Select **Get New Widgets** → **Download New Plasma Widgets**.
+4. Search for **DesClock**.
+5. Select **Install**.
+6. Drag DesClock from the widget list onto your desktop.
+
+You can also download the `.plasmoid` package directly from the KDE Store and install it using **Install Widget From Local File**.
+
+
 ### Install from source
 
 Clone the repository:
