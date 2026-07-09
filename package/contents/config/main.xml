@@ -16,7 +16,7 @@
         </entry>
 
         <entry name="fontFamily" type="String">
-            <default>Noto Sans</default>
+            <default></default>
         </entry>
 
         <entry name="timeFontSize" type="Int">

@@ -15,6 +15,14 @@ PlasmoidItem {
 
     property date currentDateTime: new Date()
 
+    FontLoader {
+        id: pressStartFont
+
+        source: Qt.resolvedUrl(
+            "../fonts/PressStart2P-Regular.ttf"
+        )
+    }
+
     function timeFormat() {
         if (plasmoid.configuration.use24Hour) {
             if (plasmoid.configuration.showSeconds) {
@@ -40,8 +48,14 @@ PlasmoidItem {
     }
 
     function selectedFontFamily() {
-        if (plasmoid.configuration.fontFamily.length > 0) {
-            return plasmoid.configuration.fontFamily
+        var configuredFont = plasmoid.configuration.fontFamily
+
+        if (configuredFont.length > 0) {
+            return configuredFont
+        }
+
+        if (pressStartFont.status === FontLoader.Ready) {
+            return pressStartFont.name
         } else {
             return "Noto Sans"
         }
@@ -71,6 +85,7 @@ PlasmoidItem {
 
         ColumnLayout {
             anchors.centerIn: parent
+
             width: parent.width
             spacing: plasmoid.configuration.lineSpacing
 
@@ -80,29 +95,47 @@ PlasmoidItem {
 
                 RowLayout {
                     id: timeRow
+
                     anchors.horizontalCenter: parent.horizontalCenter
+
                     spacing: 4
 
                     Text {
-                        text: Qt.formatTime(root.currentDateTime, root.timeFormat())
+                        text: Qt.formatTime(
+                            root.currentDateTime,
+                            root.timeFormat()
+                        )
 
                         color: plasmoid.configuration.timeColor
 
-                        font.family: plasmoid.configuration.fontFamily || "Noto Sans"
-                        font.pointSize: plasmoid.configuration.timeFontSize
+                        style: Text.Outline
+                        styleColor: "#80000000"
+
+                        font.family: root.selectedFontFamily()
+                        font.pointSize:
+                            plasmoid.configuration.timeFontSize
                         font.bold: true
-                        font.letterSpacing: plasmoid.configuration.letterSpacing
+                        font.letterSpacing:
+                            plasmoid.configuration.letterSpacing
                     }
 
                     Text {
-                        text: Qt.formatTime(root.currentDateTime, "AP")
+                        text: Qt.formatTime(
+                            root.currentDateTime,
+                            "AP"
+                        )
 
                         visible: root.shouldShowPeriodText()
 
                         color: plasmoid.configuration.timeColor
 
+                        style: Text.Outline
+                        styleColor: "#80000000"
+
                         font.family: root.selectedFontFamily()
-                        font.pointSize: Math.round(plasmoid.configuration.timeFontSize * 0.72)
+                        font.pointSize: Math.round(
+                            plasmoid.configuration.timeFontSize * 0.72
+                        )
                         font.bold: true
                         font.letterSpacing: 1
 
@@ -114,31 +147,47 @@ PlasmoidItem {
             Text {
                 Layout.fillWidth: true
 
-                text: root.maybeUppercase(Qt.formatDate(root.currentDateTime, "dddd"))
+                text: root.maybeUppercase(
+                    Qt.formatDate(
+                        root.currentDateTime,
+                        "dddd"
+                    )
+                )
+
                 horizontalAlignment: Text.AlignHCenter
 
                 color: plasmoid.configuration.secondaryColor
-                opacity: 0.95
 
-                font.family: plasmoid.configuration.fontFamily || "Noto Sans"
-                font.pointSize: plasmoid.configuration.secondaryFontSize
+                font.family: root.selectedFontFamily()
+                font.pointSize:
+                    plasmoid.configuration.secondaryFontSize
                 font.bold: false
-                font.letterSpacing: plasmoid.configuration.letterSpacing + 2
+                font.letterSpacing:
+                    plasmoid.configuration.letterSpacing + 2
             }
 
             Text {
                 Layout.fillWidth: true
 
-                text: root.maybeUppercase(Qt.formatDate(root.currentDateTime, "MMMM d, yyyy"))
+                text: root.maybeUppercase(
+                    Qt.formatDate(
+                        root.currentDateTime,
+                        "MMMM d, yyyy"
+                    )
+                )
+
                 horizontalAlignment: Text.AlignHCenter
 
                 color: plasmoid.configuration.secondaryColor
-                opacity: 0.75
 
-                font.family: plasmoid.configuration.fontFamily || "Noto Sans"
-                font.pointSize: Math.max(8, plasmoid.configuration.secondaryFontSize - 3)
+                font.family: root.selectedFontFamily()
+                font.pointSize: Math.max(
+                    8,
+                    plasmoid.configuration.secondaryFontSize - 3
+                )
                 font.bold: false
-                font.letterSpacing: plasmoid.configuration.letterSpacing
+                font.letterSpacing:
+                    plasmoid.configuration.letterSpacing
             }
         }
     }
