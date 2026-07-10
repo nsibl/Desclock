@@ -25,7 +25,7 @@ A clean and customizable desktop clock widget for KDE Plasma 6.
 
 ### Install from the KDE Store
 
-DesClock is available through the KDE Store.
+DesClock is available through the KDE Store: https://store.kde.org/p/2365101/
 
 1. Right-click an empty area of the KDE Plasma desktop.
 2. Select **Add Widgets**.
