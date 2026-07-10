@@ -43,8 +43,8 @@ You can also download the `.plasmoid` package directly from the KDE Store and in
 Clone the repository:
 
 ```bash
-git clone https://github.com/nsibl/desclock-plasmoid.git
-cd desclock-plasmoid
+git clone git clone https://github.com/nsibl/DesClock.git
+cd DesClock
 ```
 
 Install the widget:
