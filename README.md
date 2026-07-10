@@ -6,11 +6,9 @@
 
 A clean and customizable desktop clock widget for KDE Plasma 6.
 
+<img src="assets/glow.png" alt="Customized DesClock running on the KDE Plasma desktop" width="900">
+<br>
 <img src="assets/main.png" alt="DesClock running on the KDE Plasma desktop" width="900">
-<br>
-<br>
-<img src="assets/custom.png" alt="Customized DesClock running on the KDE Plasma desktop" width="900">
-<br>
 <br>
 <img src="assets/settings.png" alt="DesClock configuration settings" width="900">
 </div>
