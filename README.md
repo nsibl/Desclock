@@ -109,21 +109,40 @@ To move or resize DesClock:
 
 ### Using additional fonts
 
-DesClock includes Libre Baskerville and also supports fonts installed on the local system.
+DesClock includes Libre Baskerville and also supports fonts installed on your system.
 
-User-installed fonts are commonly stored in:
+The easiest way to install a font is:
+
+1. Download a `.ttf` or `.otf` font file.
+2. Open the font file from Dolphin.
+3. Select **Install**.
+4. Choose **Personal Use** if prompted.
+
+You can also install a font manually by copying it into:
 
 ```text
 ~/.local/share/fonts/
 ```
 
-After manually adding a font, refresh the font cache:
+Then refresh the system font cache:
 
 ```bash
 fc-cache -f
 ```
 
-Reopen the DesClock settings window if the new font does not immediately appear.
+Because DesClock runs inside Plasma, newly installed fonts may not appear until Plasma Shell is restarted.
+
+Restart Plasma Shell with:
+
+```bash
+systemctl --user restart plasma-plasmashell.service
+```
+
+Your desktop panel and widgets may briefly disappear while Plasma reloads. Open DesClock's settings again and check the font list.
+
+If the font still does not appear, log out and back in.
+
+> The name shown in DesClock may differ from the font filename. For example, `Montserrat-VariableFont_wght.ttf` may appear simply as **Montserrat**.
 
 
 ## License
