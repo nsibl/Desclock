@@ -18,14 +18,16 @@ A clean and customizable desktop clock widget for KDE Plasma 6.
 ## Requirements
 
 - KDE Plasma 6
-- Qt 6
+
+For installation from source or a downloaded `.plasmoid` file:
+
 - `kpackagetool6`
 
 ## Installation
 
 ### Install from the KDE Store
 
-DesClock is available through the KDE Store: https://store.kde.org/p/2365101/
+DesClock is available on the [KDE Store](https://store.kde.org/p/2365101/).
 
 1. Right-click an empty area of the KDE Plasma desktop.
 2. Select **Add Widgets**.
@@ -35,7 +37,6 @@ DesClock is available through the KDE Store: https://store.kde.org/p/2365101/
 6. Drag DesClock from the widget list onto your desktop.
 
 You can also download the `.plasmoid` package directly from the KDE Store and install it using **Install Widget From Local File**.
-
 
 ### Install from source
 
@@ -62,7 +63,7 @@ Then add DesClock to the desktop:
 6. Move and resize it as desired.
 7. Exit Edit Mode.
 
-## Updating
+## Updating a source installation
 
 Pull the latest changes:
 
@@ -114,7 +115,7 @@ DesClock includes Libre Baskerville and also supports fonts installed on your sy
 The easiest way to install a font is:
 
 1. Download a `.ttf` or `.otf` font file.
-2. Open the font file from Dolphin.
+2. Open the font file in Dolphin.
 3. Select **Install**.
 4. Choose **Personal Use** if prompted.
 
@@ -124,26 +125,23 @@ You can also install a font manually by copying it into:
 ~/.local/share/fonts/
 ```
 
-Then refresh the system font cache:
+After manually copying a font, refresh the system font cache:
 
 ```bash
 fc-cache -f
 ```
 
-Because DesClock runs inside Plasma, newly installed fonts may not appear until Plasma Shell is restarted.
-
-Restart Plasma Shell with:
+Because DesClock runs inside Plasma, a newly installed font may not appear immediately. Restart Plasma Shell with:
 
 ```bash
 systemctl --user restart plasma-plasmashell.service
 ```
 
-Your desktop panel and widgets may briefly disappear while Plasma reloads. Open DesClock's settings again and check the font list.
+Your desktop panel and widgets may briefly disappear while Plasma reloads. Reopen DesClock's settings and check the font list.
 
 If the font still does not appear, log out and back in.
 
 > The name shown in DesClock may differ from the font filename. For example, `Montserrat-VariableFont_wght.ttf` may appear simply as **Montserrat**.
-
 
 ## License
 
